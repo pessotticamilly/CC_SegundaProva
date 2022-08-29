@@ -1,5 +1,5 @@
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+const { initializeApp } = require('firebase/app');
+const { getFirestore, collection, doc, setDoc, addDoc, query, where, getDocs, getDoc, deleteDoc } = require('firebase/firestore/lite');
 
 const firebaseConfig = {
     apiKey: "AIzaSyB2T2vqssZMt6LWrYk9FYG05W5-CDzfl5g",
@@ -9,7 +9,7 @@ const firebaseConfig = {
     messagingSenderId: "641103259453",
     appId: "1:641103259453:web:55fd1bd1b46ee31c2c0754",
     measurementId: "G-5R9VE2CNE9"
-};
+  };
 
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
