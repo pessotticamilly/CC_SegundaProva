@@ -1,19 +1,25 @@
 const crud = require("./../../crud/index");
 const tableName = "Products";
 
+/*
+id
+Name
+Price
+*/
+
 
 async function getProducts() {
     return await crud.get(tableName);
 };
 
 async function getProductsById(id) {
-    const users = await getProducts();
+    const products = await getProducts();
 
-    for (let user of users) {
-        if (user.id == id) {
+    for (let product of products) {
+        if (product.id == id) {
             return await crud.getById(tableName, id);
         } else {
-            console.log(user.id);
+            console.log(product.id);
             return {
                 Error: id + " not found!"
             };
@@ -36,13 +42,12 @@ async function createProducts(data) {
 };
 
 async function editProducts(data, id) {
-    const users = await getProducts();
+    const products = await getProducts();
 
-    for (let user of users) {
-        if (user.id == id) {
+    for (let product of products) {
+        if (product.id == id) {
             return await crud.save(tableName, id, data);
         } else {
-            console.log(user.id);
             return {
                 Error: id + " not found!"
             };
@@ -51,13 +56,12 @@ async function editProducts(data, id) {
 };
 
 async function removeProducts(id) {
-    const users = await getProducts();
+    const products = await getProducts();
 
-    for (let user of users) {
-        if (user.id == id) {
+    for (let product of products) {
+        if (product.id == id) {
             return await crud.remove(tableName, id);
         } else {
-            console.log(user.id);
             return {
                 Error: id + " not found!"
             };

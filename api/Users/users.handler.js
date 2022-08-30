@@ -1,6 +1,13 @@
 const crud = require("./../../crud/index");
 const tableName = "Users";
 
+/*
+id
+CPF
+Name
+Surname
+*/
+
 
 async function getUsers() {
     return await crud.get(tableName);
@@ -13,7 +20,6 @@ async function getUsersById(id) {
         if (user.id == id) {
             return await crud.getById(tableName, id);
         } else {
-            console.log(user.id);
             return {
                 Error: id + " not found!"
             };
@@ -46,7 +52,6 @@ async function editUsers(data, id) {
         if (user.id == id) {
             return await crud.save(tableName, id, data);
         } else {
-            console.log(user.id);
             return {
                 Error: id + " not found!"
             };
@@ -61,7 +66,6 @@ async function removeUsers(id) {
         if (user.id == id) {
             return await crud.remove(tableName, id);
         } else {
-            console.log(user.id);
             return {
                 Error: id + " not found!"
             };

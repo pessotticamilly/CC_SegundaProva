@@ -1,6 +1,13 @@
 const crud = require("./../../crud/index");
 const tableName = "OrdersProducts";
 
+/*
+id
+ProductId
+Quantity
+OrderId
+*/
+
 
 async function getOrdersProducts() {
     return await crud.get(tableName);
