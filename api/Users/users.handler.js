@@ -1,4 +1,3 @@
-const { fromString } = require("long");
 const crud = require("./../../crud/index");
 const tableName = "Users";
 
@@ -8,7 +7,18 @@ async function getUsers() {
 };
 
 async function getUsersById(id) {
-    return await crud.getById(tableName, id);
+    const users = await getUsers();
+
+    for (let user of users) {
+        if (user.id == id) {
+            return await crud.getById(tableName, id);
+        } else {
+            console.log(user.id);
+            return {
+                Error: id + " not found!"
+            };
+        };
+    };
 };
 
 async function createUsers(data) {
@@ -26,23 +36,32 @@ async function createUsers(data) {
         };
     } else {
         return await crud.save(tableName, false, data);
-    }
+    };
 };
 
 async function editUsers(data, id) {
-    return await crud.save(tableName, id, data);
+    const users = await getUsers();
+
+    for (let user of users) {
+        if (user.id == id) {
+            return await crud.save(tableName, id, data);
+        } else {
+            console.log(user.id);
+            return {
+                Error: id + " not found!"
+            };
+        };
+    };
 };
 
 async function removeUsers(id) {
     const users = await getUsers();
 
-    console.log(users);
-
-    for (let userId of users) {
-        if (userId == id) {
+    for (let user of users) {
+        if (user.id == id) {
             return await crud.remove(tableName, id);
         } else {
-            console.log("User ID: " + userId);
+            console.log(user.id);
             return {
                 Error: id + " not found!"
             };
