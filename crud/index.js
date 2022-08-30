@@ -9,10 +9,10 @@ const firebaseConfig = {
     messagingSenderId: "641103259453",
     appId: "1:641103259453:web:55fd1bd1b46ee31c2c0754",
     measurementId: "G-5R9VE2CNE9"
-  };
+};
 
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+const db = getFirestore();
 
 async function save(tableName, id, data) {
     if (id) {
