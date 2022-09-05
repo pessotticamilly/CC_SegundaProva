@@ -53,10 +53,10 @@ async function getById(tableName, id) {
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
-        return docSnap.dados();
+        return docSnap.data();
     } else {
         return {
-            message: `${id} not found!`
+            message: `'${id}' not found!`
         };
     };
 };
@@ -65,7 +65,7 @@ async function remove(tableName, id) {
     const data = await deleteDoc(doc(db, tableName, id));
 
     return {
-        message: `${id} removed!`
+        message: `'${id}' removed!`
     };
 };
 

@@ -32,17 +32,21 @@ async function createUsers(data) {
         return {
             Error: "It's necessary to fill in the 'Name' field!"
         };
-    } else if (!data.Surname) {
+    };
+
+    if (!data.Surname) {
         return {
             Error: "It's necessary to fill in the 'Surname' field!"
         };
-    } else if (!data.CPF) {
+    };
+
+    if (!data.CPF) {
         return {
             Error: "It's necessary to fill in the 'CPF' field!"
         };
-    } else {
-        return await crud.save(tableName, false, data);
     };
+
+    return await crud.save(tableName, false, data);
 };
 
 async function editUsers(data, id) {

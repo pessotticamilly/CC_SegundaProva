@@ -32,13 +32,15 @@ async function createProducts(data) {
         return {
             Error: "It's necessary to fill in the 'Name' field!"
         };
-    } else if (!data.Price) {
+    };
+
+    if (!data.Price) {
         return {
             Error: "It's necessary to fill in the 'Price' field!"
         };
-    } else {
-        return await crud.save(tableName, false, data);
     };
+
+    return await crud.save(tableName, false, data);
 };
 
 async function editProducts(data, id) {
