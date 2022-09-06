@@ -58,7 +58,17 @@ async function createOrdersProducts(data) {
 };
 
 async function editOrdersProducts(data, id) {
-    return await crud.save(tableName, id, data);
+    let ordersProducts = await getOrdersProducts();
+
+    for(let orderProduct of ordersProducts) {
+        if(orderProduct.id == id) {
+            return await crud.save(tableName, id, data);
+        } else {
+            return {
+                Error: `'${id}' not found!`
+            };
+        };
+    };
 };
 
 async function removeOrdersProducts(id) {

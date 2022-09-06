@@ -33,7 +33,7 @@ async function createOrders(data) {
         return {
             Error: "It's necessary to fill in the 'UserId' field!"
         };
-    }
+    };
 
     const user = await (await usersHandler.getUsers()).find(e => e.id == data.UserId);
 
